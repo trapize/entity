@@ -1,0 +1,45 @@
+{
+  "name": "@trapize/entity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "preflight": "npm run build && npm run lint && npm test",
+    "preversion": "npm test && npm run build && npm run lint",
+    "version": "git add -A src",
+    "lint": " tslint -p tsconfig.json",
+    "prepare": "",
+    "prepublishOnly": "npm test && npm run build && npm run lint",
+    "test": "jest",
+    "postversion": "git push && git push --tags",
+    "build": "gulp clean && gulp"
+  },
+  "author": "ztrank",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/jest": "^24.9.0",
+    "@types/lodash": "^4.14.149",
+    "@types/mysql": "^2.15.8",
+    "@types/node": "^13.1.8",
+    "@types/pluralize": "0.0.29",
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.3.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "@trapize/connections": "^1.0.2",
+    "@trapize/core": "^1.0.4",
+    "inversify": "^5.0.1",
+    "lodash": "^4.17.15",
+    "pluralize": "^8.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.4"
+  }
+}
