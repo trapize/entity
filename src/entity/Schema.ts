@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { injectable, inject, optional } from 'inversify';
 import { EntitySymbols } from './Symbols';
-import { IConnectionFactory, IConnection, IPool, Connections } from '@trapize/connections';
+import { IConnectionFactory, IConnection, IPool, Connection } from '@trapize/connections';
 import { Observable, from, of } from 'rxjs';
 import { map, mergeMap, concatMap, tap, reduce } from 'rxjs/operators';
 import { Model } from './Model';
@@ -157,7 +157,7 @@ export class Schema implements ISchema {
      */
     public constructor(
         @inject(Core.Configuration.IAppConfig) private appConfig: IAppConfig,
-        @inject(Connections.IConnectionFactory) private connFactory: IConnectionFactory,
+        @inject(Connection.IConnectionFactory) private connFactory: IConnectionFactory,
         @inject(EntitySymbols.QueryBuilderConstructor) @optional() queryBuilderConstructor?: IQueryBuilderConstructor,
         @inject(EntitySymbols.DmlBuilder) @optional()  dmlBuilder?: IDmlBuilder,
     ) {
