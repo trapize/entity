@@ -22,5 +22,5 @@ export * from './query-builder';
 export * from './operators';
 export * from './exceptions/Entity.Exception';
 
-import * as Entity from './Symbols';
-export { Entity }
+import * as Entities from './Symbols';
+export { Entities }
