@@ -34,8 +34,8 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@trapize/connections": "^1.0.2",
-    "@trapize/core": "^1.0.4",
+    "@trapize/connections": ">=1.0.2",
+    "@trapize/core": ">=1.0.4",
     "inversify": "^5.0.1",
     "lodash": "^4.17.15",
     "pluralize": "^8.0.0",
