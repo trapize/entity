@@ -74,7 +74,7 @@ export class MyController {
 ## Advanced
 Checkout the wiki for advanced usage.
 
-https://github.com/trapize/entity.wiki.git
+https://github.com/trapize/core/wiki
 
 ## MIT
 
