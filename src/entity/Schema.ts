@@ -168,6 +168,36 @@ export class Schema implements ISchema {
     /**
      *
      *
+     * @readonly
+     * @protected
+     * @type {IPool}
+     * @memberof Schema
+     */
+    protected get pool(): IPool {
+        if(!this._pool) {
+            throw new EntityExceptions.SchemaNotConnected('Schema not connected. Did you mean GetPool(): Observable<IPool>?');
+        }
+        return this._pool;
+    }
+
+    /**
+     *
+     *
+     * @readonly
+     * @protected
+     * @type {IConnection}
+     * @memberof Schema
+     */
+    protected get connection(): IConnection {
+        if(!this._connection) {
+            throw new EntityExceptions.SchemaNotConnected('Schema not connected. Did you mean GetConnection(): Observable<IConnection>?');
+        }
+        return this._connection;
+    }
+
+    /**
+     *
+     *
      * @template T
      * @param {typeof Model} type
      * @param {IQueryFilter} [filter]
@@ -339,36 +369,6 @@ export class Schema implements ISchema {
         return this.GetConnection().pipe(
             mergeMap(connection => connection.procedure<void>(`DELETE FROM ${type.Describe.schema}.${type.Describe.table} WHERE ${filtersAndInputs[0]}`, filtersAndInputs[1]))
         );
-    }
-
-    /**
-     *
-     *
-     * @readonly
-     * @protected
-     * @type {IPool}
-     * @memberof Schema
-     */
-    protected get pool(): IPool {
-        if(!this._pool) {
-            throw new EntityExceptions.SchemaNotConnected('Schema not connected. Did you mean GetPool(): Observable<IPool>?');
-        }
-        return this._pool;
-    }
-
-    /**
-     *
-     *
-     * @readonly
-     * @protected
-     * @type {IConnection}
-     * @memberof Schema
-     */
-    protected get connection(): IConnection {
-        if(!this._connection) {
-            throw new EntityExceptions.SchemaNotConnected('Schema not connected. Did you mean GetConnection(): Observable<IConnection>?');
-        }
-        return this._connection;
     }
 
     /**
