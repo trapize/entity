@@ -105,62 +105,6 @@ export abstract class Model {
     /**
      *
      *
-     * @param {string} key
-     * @param {*} value
-     * @memberof Model
-     */
-    public Set(key: string, value: any): void {
-        if(this.Type.Describe.getIsField(key)) {
-            this._values[key] = value;
-            this._isModified = this._isModified || this._values[key] !== this._previous[key];
-        } else {
-            (<any>this)[key] = value;
-        }
-    }
-
-    /**
-     *
-     *
-     * @template T
-     * @param {string} key
-     * @returns {T}
-     * @memberof Model
-     */
-    public Get<T = any>(key: string): T {
-        if(this.Type.Describe.getIsField(key)) {
-            return this._values[key];
-        } else {
-            return (<any>this)[key];
-        }
-    }
-
-    /**
-     *
-     *
-     * @template T
-     * @param {string} key
-     * @returns {T}
-     * @memberof Model
-     */
-    public GetPrevious<T = any>(key: string): T {
-        return this._previous[key];
-    }
-    
-    /**
-     *
-     *
-     * @param {string} key
-     * @returns {boolean}
-     * @memberof Model
-     */
-    public GetIsChanged(key: string): boolean {
-        return this.Get(key) !== this.GetPrevious(key);
-    }
-
-
-    /**
-     *
-     *
      * @readonly
      * @type {boolean}
      * @memberof Model
@@ -211,6 +155,61 @@ export abstract class Model {
      */
     public get Function(): Function {
         return Object.getPrototypeOf(this).constructor;
+    }
+
+    /**
+     *
+     *
+     * @param {string} key
+     * @param {*} value
+     * @memberof Model
+     */
+    public Set(key: string, value: any): void {
+        if(this.Type.Describe.getIsField(key)) {
+            this._values[key] = value;
+            this._isModified = this._isModified || this._values[key] !== this._previous[key];
+        } else {
+            (<any>this)[key] = value;
+        }
+    }
+
+    /**
+     *
+     *
+     * @template T
+     * @param {string} key
+     * @returns {T}
+     * @memberof Model
+     */
+    public Get<T = any>(key: string): T {
+        if(this.Type.Describe.getIsField(key)) {
+            return this._values[key];
+        } else {
+            return (<any>this)[key];
+        }
+    }
+
+    /**
+     *
+     *
+     * @template T
+     * @param {string} key
+     * @returns {T}
+     * @memberof Model
+     */
+    public GetPrevious<T = any>(key: string): T {
+        return this._previous[key];
+    }
+    
+    /**
+     *
+     *
+     * @param {string} key
+     * @returns {boolean}
+     * @memberof Model
+     */
+    public GetIsChanged(key: string): boolean {
+        return this.Get(key) !== this.GetPrevious(key);
     }
 
     /**
